@@ -134,18 +134,21 @@
 
     function formatCurrency (n, currency, formatType, roundingFunction) {
         var lang = languages[currentLanguage],
-            space = '',
             currencyExceptions = lang.currency.exceptions || defaultCurrencyExceptions,
             isNegative = n._value < 0,
             formattedNumber, output, currencyFormat, currencySymbol, format;
 
         formatType = formatType || 'full';
         currencyFormat = lang.currency.format[formatType];
+        if( typeof lang.currency.format.exceptions !== 'undefined' && typeof lang.currency.format.exceptions[currency] !== 'undefined' && typeof lang.currency.format.exceptions[currency][formatType] !== 'undefined') {
+          currencyFormat = lang.currency.format.exceptions[currency][formatType];
+        }
+
         if (isNegative && lang.currency.format['negative_' + formatType]) {
           currencyFormat = lang.currency.format['negative_' + formatType];
         }
 
-        format = currencyFormat.replace(/(?: ?\$ ?)|\-/g, '');
+        format = currencyFormat.replace(/(?: ?\$ ? ?)|\-/g, '').replace(' ','');
         if (!currency) {
             currencySymbol = lang.currency.symbol;
         } else if (defaultCurrencies.indexOf(currency) > -1) {
@@ -157,10 +160,9 @@
         } else {
             throw new Error(currency + ' is not a valid currency');
         }
-
         // format the number
         formattedNumber = formatNumber(n._value, format, roundingFunction).replace(/[\(\-\)]/g,'');
-        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|0[,.]00 ?a|#[,. ]###)/, formattedNumber).replace('$', currencySymbol);
+        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|#[,\. ]##0|0[,.]00 ?a|#[,. ]###)/, formattedNumber).replace('$', currencySymbol);
 
         return output;
     }
@@ -322,6 +324,8 @@
             }
 
             w = value.toString().split('.')[0];
+
+
             precision = format.split('.')[1];
             thousands = format.indexOf(',');
 
