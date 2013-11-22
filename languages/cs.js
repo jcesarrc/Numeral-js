@@ -18,6 +18,9 @@
         ordinal: function () {
             return '.';
         },
+        number : {
+          defaultFormat : '#,##0[.]00'
+        },
         currency: {
             format: {
                 full: '#,##0.00 $',
@@ -28,12 +31,12 @@
                 negative_rounded: '(#,### $)',
                 exceptions : {
                   INR : {
-                    full: '#,##0 $',
-                    negative_full: '(#,##0 $)'
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
                   },
                   JPY : {
-                    full: '#,##0 $',
-                    negative_full: '(#,##0 $)'
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
                   }
                 }
             },

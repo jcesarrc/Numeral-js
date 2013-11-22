@@ -64,7 +64,16 @@
 
     // determine what type of formatting we need to do
     function formatNumeral (n, format, roundingFunction, config) {
-        var output, currencyType, currencyFormatType;
+        var output, currencyType, currencyFormatType, lang;
+
+        if(!format){
+          lang = languages[currentLanguage];
+          if(lang.number && lang.number.defaultFormat) {
+            format = lang.number.defaultFormat;
+          } else {
+            format = defaultFormat;
+          }
+        }
 
         // figure out what kind of format we are dealing with
         if (format.indexOf('$') > -1) { // currency!!!!!
@@ -136,16 +145,19 @@
         var lang = languages[currentLanguage],
             currencyExceptions = lang.currency.exceptions || defaultCurrencyExceptions,
             isNegative = n._value < 0,
-            formattedNumber, output, currencyFormat, currencySymbol, format;
+            formattedNumber, output, currencyFormat, currencySymbol, format, formatTypeLookupKey;
 
         formatType = formatType || 'full';
         currencyFormat = lang.currency.format[formatType];
-        if( typeof lang.currency.format.exceptions !== 'undefined' && typeof lang.currency.format.exceptions[currency] !== 'undefined' && typeof lang.currency.format.exceptions[currency][formatType] !== 'undefined') {
-          currencyFormat = lang.currency.format.exceptions[currency][formatType];
+        formatTypeLookupKey = isNegative ? 'negative_' + formatType : formatType;
+
+        if (isNegative && lang.currency.format[formatTypeLookupKey]) {
+          currencyFormat = lang.currency.format[formatTypeLookupKey];
         }
 
-        if (isNegative && lang.currency.format['negative_' + formatType]) {
-          currencyFormat = lang.currency.format['negative_' + formatType];
+        //if currency is an exception from default format
+        if(lang.currency.format.exceptions && lang.currency.format.exceptions[currency] && lang.currency.format.exceptions[currency][formatTypeLookupKey]) {
+          currencyFormat = lang.currency.format.exceptions[currency][formatTypeLookupKey];
         }
 
         format = currencyFormat.replace(/(?: ?\$ ? ?)|\-/g, '').replace(' ','');
@@ -162,7 +174,7 @@
         }
         // format the number
         formattedNumber = formatNumber(n._value, format, roundingFunction).replace(/[\(\-\)]/g,'');
-        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|#[,\. ]##0|0[,.]00 ?a|#[,. ]###)/, formattedNumber).replace('$', currencySymbol);
+        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|0[,.]00 ?a|#[,. ]###|#[,\. ]##)/, formattedNumber).replace('$', currencySymbol);
 
         return output;
     }
@@ -469,7 +481,7 @@
     };
 
     numeral.defaultFormat = function (format) {
-        defaultFormat = typeof(format) === 'string' ? format : '0.0';
+      defaultFormat = typeof(format) === 'string' ? format : '0.0';
     };
 
     /************************************
@@ -479,7 +491,6 @@
     function loadLanguage(key, values) {
         languages[key] = values;
     }
-
 
     /************************************
         Numeral Prototype
@@ -494,7 +505,7 @@
 
         format : function (inputString, roundingFunction, currency) {
             return formatNumeral(this,
-                  inputString ? inputString : defaultFormat,
+                  inputString,
                   (roundingFunction !== undefined) ? roundingFunction : Math.round,
                   currency ? {currency: currency} : null
               );
