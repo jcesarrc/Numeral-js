@@ -1348,53 +1348,66 @@
     }
 }());
 
-/*! 
+/*!
  * numeral.js language configuration
  * language : russian (ru)
  * author : Anatoli Papirovski : https://github.com/apapirovski
  */
-(function () {
-    var language = {
-        delimiters: {
-            thousands: ' ',
-            decimal: ','
-        },
-        abbreviations: {
-            thousand: 'тыс.',
-            million: 'млн',
-            billion: 'b',
-            trillion: 't'
-        },
-        ordinal: function () {
-            // not ideal, but since in Russian it can taken on 
+ (function () {
+  var language = {
+    delimiters: {
+      thousands: ' ',
+      decimal: ','
+    },
+    abbreviations: {
+      thousand: 'тыс.',
+      million: 'млн',
+      billion: 'b',
+      trillion: 't'
+    },
+    ordinal: function () {
+            // not ideal, but since in Russian it can taken on
             // different forms (masculine, feminine, neuter)
             // this is all we can do
-            return '.'; 
-        },
-        currency: {
+            return '.';
+          },
+          number : {
+            defaultFormat : '#,##0[.]00[0]'
+          },
+          currency: {
             format: {
-                full: '#,##0.00 $',
-                negative_full: '-#,##0.00 $',
-                abbr: '0.00a $',
-                negative_abbr: '-0.00a $',
-                rounded: '#,### $',
-                negative_rounded: '-#,### $'
+              full: '#,##0.00 $',
+              negative_full: '(#,##0.00 $)',
+              abbr: '0.00a $',
+              negative_abbr: '(0.00a $)',
+              rounded: '#,### $',
+              negative_rounded: '(#,### $)',
+              exceptions : {
+                INR : {
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
+                },
+                JPY : {
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
+                }
+              }
             },
-            exceptions: {AUD: 'A$', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: '\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', RUB: '\u0440\u0443\u0431.', RUR: '\u0440.', SDG: '\u0441\u0443\u0434\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u0424\u0443\u043D\u0442\u0430*', SSP: '\u044E\u0436\u043D\u043E\u0441\u0443\u0434\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u0444\u0443\u043D\u0442\u0430', THB: '\u0E3F', TND: '\u0442\u0443\u043D\u0438\u0441\u0441\u043A\u043E\u0433\u043E \u0434\u0438\u043D\u0430\u0440\u0430*', TWD: 'NT$', UAH: '\u20B4', USD: '$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF', XXX: 'XXXX'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'RUB',
             symbol: '\u0440\u0443\u0431.'
-        }
-    };
+          }
+        };
 
     // Node
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
+      module.exports = language;
     }
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('ru', language);
+      this.numeral.language('ru', language);
     }
-}());
+  }());
 
 /*!
  * numeral.js language configuration
@@ -1441,6 +1454,64 @@
     }
 }());
 
+/*!
+ * numeral.js language configuration
+ * language : Swedish (sv-se)
+ * author : Dan Hagman (https://github.com/hagmandan)
+ */
+ (function () {
+  var language = {
+    delimiters: {
+      thousands: ' ',
+      decimal: ','
+    },
+    abbreviations: {
+      thousand: 'tn',
+      million: 'mn',
+      billion: 'md',
+      trillion: 'bn'
+    },
+    ordinal: function () {
+      return '.';
+    },
+    number : {
+      defaultFormat : '#,##0[.]00[0]'
+    },
+    currency: {
+      format: {
+        full: '#,##0.00 $',
+        negative_full: '(#,##0.00 $)',
+        abbr: '0.00a $',
+        negative_abbr: '(0.00a $)',
+        rounded: '#,### $',
+        negative_rounded: '(#,### $)',
+        exceptions : {
+          INR : {
+            full: '#,### $',
+            negative_full: '(#,## $)'
+          },
+          JPY : {
+            full: '#,### $',
+            negative_full: '(#,## $)'
+          }
+        }
+      },
+      exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+      localCurrency: 'SEK',
+      symbol: 'kr'
+    }
+  };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+      this.numeral.language('sv-se', language);
+    }
+  }());
+
 /*! 
  * numeral.js language configuration
  * language : thai (th)
@@ -1486,82 +1557,153 @@
     }
 }());
 
-/*! 
+/*!
+ * numeral.js language configuration
+ * language : Tagalog (Philippine) (tl-ph)
+ * author : Dan Hagman (https://github.com/hagmandan)
+ */
+ (function () {
+  var language = {
+    delimiters: {
+      thousands: ',',
+      decimal: '.'
+    },
+    abbreviations: {
+      thousand: 'K',
+      million: 'M', 
+      billion: 'B',
+      trillion: 'T'
+    },
+    ordinal: function (number) {
+      return '.';
+    },
+    number : {
+      defaultFormat : '#,##0[.]00[0]'
+    },
+    currency: {
+      format: {
+        full: '$ #,##0.00',
+        negative_full: '($ #,##0.00)',
+        abbr: '$ 0.00a',
+        negative_abbr: '($ 0.00a)',
+        rounded: '$ #,###',
+        negative_rounded: '($ #,###)',
+        exceptions : {
+          INR : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          },
+          JPY : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          }
+        }
+      },
+      exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+      localCurrency: 'PHP',
+      symbol: '\u20B1'
+    }
+  };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+      this.numeral.language('tl-ph', language);
+    }
+  }());
+
+/*!
  * numeral.js language configuration
  * language : turkish (tr)
  * author : Ecmel Ercan : https://github.com/ecmel, Erhan Gundogan : https://github.com/erhangundogan, Burak Yiğit Kaya: https://github.com/BYK
  */
-(function () {
-    var suffixes = {
-            1: '\'inci',
-            5: '\'inci',
-            8: '\'inci',
-            70: '\'inci',
-            80: '\'inci',
+ (function () {
+  var suffixes = {
+    1: '\'inci',
+    5: '\'inci',
+    8: '\'inci',
+    70: '\'inci',
+    80: '\'inci',
 
-            2: '\'nci',
-            7: '\'nci',
-            20: '\'nci',
-            50: '\'nci',
+    2: '\'nci',
+    7: '\'nci',
+    20: '\'nci',
+    50: '\'nci',
 
-            3: '\'üncü',
-            4: '\'üncü',
-            100: '\'üncü',
+    3: '\'üncü',
+    4: '\'üncü',
+    100: '\'üncü',
 
-            6: '\'ncı',
+    6: '\'ncı',
 
-            9: '\'uncu',
-            10: '\'uncu',
-            30: '\'uncu',
+    9: '\'uncu',
+    10: '\'uncu',
+    30: '\'uncu',
 
-            60: '\'ıncı',
-            90: '\'ıncı'
-        },
-        language = {
-            delimiters: {
-                thousands: '.',
-                decimal: ','
-            },
-            abbreviations: {
-                thousand: 'bin',
-                million: 'milyon',
-                billion: 'milyar',
-                trillion: 'trilyon'
-            },
-            ordinal: function (number) {
-                if (number === 0) {  // special case for zero
-                    return '\'ıncı';
-                }
+    60: '\'ıncı',
+    90: '\'ıncı'
+  },
+  language = {
+    delimiters: {
+      thousands: '.',
+      decimal: ','
+    },
+    abbreviations: {
+      thousand: 'bin',
+      million: 'milyon',
+      billion: 'milyar',
+      trillion: 'trilyon'
+    },
+    ordinal: function (number) {
+      if (number === 0) {  // special case for zero
+        return '\'ıncı';
+      }
 
-                var a = number % 10,
-                    b = number % 100 - a,
-                    c = number >= 100 ? 100 : null;
+      var a = number % 10,
+      b = number % 100 - a,
+      c = number >= 100 ? 100 : null;
 
-              return suffixes[a] || suffixes[b] || suffixes[c];
-            },
-            currency: {
-                format: {
-                    full: '#,##0.00 $',
-                    negative_full: '(#,##0.00 $)',
-                    abbr: '0.00a $',
-                    negative_abbr: '(0.00a $)',
-                    rounded: '#,### $',
-                    negative_rounded: '(#,### $)'
-                },
-                exceptions: {AUD: 'AU$', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: '\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', THB: '\u0E3F', TRY: 'TL', TWD: 'NT$', USD: '$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
-                localCurrency: 'TRY',
-                symbol: 'TL'
-            }
-        };
-
-    // Node
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
+      return suffixes[a] || suffixes[b] || suffixes[c];
+    },
+    number : {
+      defaultFormat : '#,##0[.]00[0]'
+    },
+    currency: {
+      format: {
+        full: '#,##0.00 $',
+        negative_full: '(#,##0.00 $)',
+        abbr: '0.00a $',
+        negative_abbr: '(0.00a $)',
+        rounded: '#,### $',
+        negative_rounded: '(#,### $)',
+        exceptions : {
+          INR : {
+            full: '#,### $',
+            negative_full: '(#,## $)'
+          },
+          JPY : {
+            full: '#,### $',
+            negative_full: '(#,## $)'
+          }
+        }
+      },
+      exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+      localCurrency: 'TRY',
+      symbol: 'TL'
     }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('tr', language);
-    }
+  };
+
+  // Node
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = language;
+  }
+  // Browser
+  if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+    this.numeral.language('tr', language);
+  }
 }());
 
 // numeral.js language configuration
@@ -1609,3 +1751,127 @@
         this.numeral.language('uk-UA', language);
     }
 }());
+
+/*!
+ * numeral.js language configuration
+ * language : Chinese Simplified (zh-cn)
+ * author : Dan Hagman (https://github.com/hagmandan)
+ */
+ (function () {
+  var language = {
+    delimiters: {
+      thousands: ',',
+      decimal: '.'
+    },
+    abbreviations: {
+      thousand: '万',
+      million: '亿',
+      billion: '万亿',
+      trillion: '亿亿'
+    },
+    ordinal: function (number) {
+      return '.';
+    },
+    number : {
+      defaultFormat : '#,##0[.]00[0]'
+    },
+    currency: {
+      format: {
+        full: '$ #,##0.00',
+        negative_full: '($ #,##0.00)',
+        abbr: '$ 0.00a',
+        negative_abbr: '($ 0.00a)',
+        rounded: '$ #,###',
+        negative_rounded: '($ #,###)',
+        exceptions : {
+          INR : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          },
+          JPY : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          },
+          USD : {
+            full: '$#,##0.00',
+            negative_full: '($#,##0.00)'
+          }
+        }
+      },
+      exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+      localCurrency: 'CNY',
+      symbol: '\u00A5'
+    }
+  };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+      this.numeral.language('zh-cn', language);
+    }
+  }());
+
+/*!
+ * numeral.js language configuration
+ * language : Chinese Traidional (zh-tw)
+ * author : Dan Hagman (https://github.com/hagmandan)
+ */
+ (function () {
+  var language = {
+    delimiters: {
+      thousands: ',',
+      decimal: '.'
+    },
+    abbreviations: {
+      thousand: 'K',
+      million: 'M',
+      billion: 'G',
+      trillion: 'T'
+    },
+    ordinal: function (number) {
+      return '.';
+    },
+    number : {
+      defaultFormat : '#,##0[.]00[0]'
+    },
+    currency: {
+      format: {
+        full: '$ #,##0.00',
+        negative_full: '($ #,##0.00)',
+        abbr: '$ 0.00a',
+        negative_abbr: '($ 0.00a)',
+        rounded: '$ #,###',
+        negative_rounded: '($ #,###)',
+        exceptions : {
+          INR : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          },
+          JPY : {
+            full: '$ #,###',
+            negative_full: '($ #,##)'
+          },
+          USD : {
+            full: '$#,##0.00',
+            negative_full: '($#,##0.00)'
+          }
+        }
+      },
+      exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+      localCurrency: 'CNY',
+      symbol: '\u00A5'
+    }
+  };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+      this.numeral.language('zh-tw', language);
+    }
+  }());
