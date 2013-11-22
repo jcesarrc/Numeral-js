@@ -96,8 +96,8 @@ exports.misc = {
         var cOld = '$',
             cNew = '!',
             formatTestVal = function() { return numeral('100').format('$0,0') },
-            oldCurrencyVal = cOld + '100',
-            newCurrencyVal = cNew + '100';
+            oldCurrencyVal = cOld + ' 100',
+            newCurrencyVal = cNew + ' 100';
         
         test.strictEqual(numeral.languageData().currency.symbol, cOld, 'Current language currency is ' + cOld);
         test.strictEqual(numeral.languageData('en').currency.symbol, cOld, 'English language currency is ' + cOld);
