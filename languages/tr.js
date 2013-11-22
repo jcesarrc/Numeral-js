@@ -56,20 +56,24 @@
     },
     currency: {
       format: {
-        full: '#,##0.00 $',
-        negative_full: '(#,##0.00 $)',
-        abbr: '0.00a $',
-        negative_abbr: '(0.00a $)',
-        rounded: '#,### $',
-        negative_rounded: '(#,### $)',
+        full: '$ #,##0.00',
+        negative_full: '($ #,##0.00)',
+        abbr: '$ 0.00a',
+        negative_abbr: '($ 0.00a)',
+        rounded: '$ #,###',
+        negative_rounded: '($ #,###)',
         exceptions : {
           INR : {
-            full: '#,### $',
-            negative_full: '(#,## $)'
+            full: '$ #,##',
+            negative_full: '($ #,##)'
           },
           JPY : {
-            full: '#,### $',
-            negative_full: '(#,## $)'
+            full: '$ #,##',
+            negative_full: '($ #,##)'
+          },
+          USD : {
+            full: '#,##0.00 $',
+            negative_full: '(#,##0.00 $)'
           }
         }
       },

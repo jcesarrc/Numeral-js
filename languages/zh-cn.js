@@ -35,8 +35,8 @@
             negative_full: '($ #,##)'
           },
           JPY : {
-            full: '$ #,###',
-            negative_full: '($ #,##)'
+            full: '$ #,###',
+            negative_full: '($ #,##)'
           },
           USD : {
             full: '$#,##0.00',
