@@ -1,22 +1,21 @@
 /*! 
  * numeral.js language configuration
- * language : italian Italy (it)
- * author : Giacomo Trombi : http://cinquepunti.it
+ * language : Korean (South Korea) (ko-kr)
  */
 (function () {
     var language = {
         delimiters: {
-            thousands: '.',
-            decimal: ','
+            thousands: ',',
+            decimal: '.'
         },
         abbreviations: {
-            thousand: 'mila',
-            million: 'mil',
-            billion: 'b',
-            trillion: 't'
+            thousand: 'k',
+            million: 'mio',
+            billion: 'mia',
+            trillion: 'b'
         },
         ordinal: function (number) {
-            return 'º';
+            return '.';
         },
         number : {
           defaultFormat : '#,##0[.]00[0]'
@@ -40,9 +39,9 @@
                 }
               }
             },
-            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
-            localCurrency: 'EUR',
-            symbol: '\u20AC'
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            localCurrency: 'KRW',
+            symbol: '\uFFE6'
         }
     };
 
@@ -52,6 +51,6 @@
     }
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('it', language);
+        this.numeral.language('ko-kr', language);
     }
 }());

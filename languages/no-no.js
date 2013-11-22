@@ -1,48 +1,49 @@
 /*! 
  * numeral.js language configuration
- * language : italian Italy (it)
- * author : Giacomo Trombi : http://cinquepunti.it
+ * language : Norwegian (Norway) (nl-nl)
+ * author : Dave Clayton : https://github.com/davedx
  */
 (function () {
     var language = {
         delimiters: {
-            thousands: '.',
-            decimal: ','
+            thousands: ' ',
+            decimal  : ','
         },
         abbreviations: {
-            thousand: 'mila',
-            million: 'mil',
-            billion: 'b',
-            trillion: 't'
+            thousand : 'k',
+            million  : 'mln',
+            billion  : 'mrd',
+            trillion : 'bln'
         },
-        ordinal: function (number) {
-            return 'º';
+        ordinal : function (number) {
+            var remainder = number % 100;
+            return (number !== 0 && remainder <= 1 || remainder === 8 || remainder >= 20) ? 'ste' : 'de';
         },
         number : {
           defaultFormat : '#,##0[.]00[0]'
         },
         currency: {
             format: {
-              full: '$ #,##0.00',
-              negative_full: '($ #,##0.00)',
-              abbr: '$ 0.00a',
-              negative_abbr: '($ 0.00a)',
-              rounded: '$ #,###',
-              negative_rounded: '($ #,###)',
+              full: '#,##0.00 $',
+              negative_full: '(#,##0.00 $)',
+              abbr: '0.00a $',
+              negative_abbr: '(0.00-a $)',
+              rounded: '#,### $',
+              negative_rounded: '(#,### $)',
               exceptions : {
                 INR : {
-                  full: '$ #,###',
-                  negative_full: '($ #,##)'
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
                 },
                 JPY : {
-                  full: '$ #,###',
-                  negative_full: '($ #,##)'
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
                 }
               }
             },
             exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
-            localCurrency: 'EUR',
-            symbol: '\u20AC'
+            localCurrency: 'NOK',
+            symbol: 'kr'
         }
     };
 
@@ -52,6 +53,6 @@
     }
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('it', language);
+        this.numeral.language('no-no', language);
     }
 }());

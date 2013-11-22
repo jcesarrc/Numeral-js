@@ -143,7 +143,6 @@
                   negative_full: '(#,## $)'
                 }
               }
-
             },
             exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'DKK',
@@ -388,16 +387,29 @@
                    (b === 8) ? 'vo' :
                    (b === 9) ? 'no' : 'to';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
             format: {
-                full: '$#,##0.00',
-                negative_full: '-$#,##0.00',
-                abbr: '$0.00a',
-                negative_abbr: '-$0.00a',
-                rounded: '$#,###',
-                negative_rounded: '-$#,###'
+                full: '#,##0.00 $',
+                negative_full: '(#,##0.00 $)',
+                abbr: '0.00a $',
+                negative_abbr: '(0.00a $)',
+                rounded: '#,### $',
+                negative_rounded: '(#,### $)',
+                exceptions : {
+                  INR : {
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
+                  },
+                  JPY : {
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
+                  }
+                }
             },
-            exceptions: {AUD: 'A$', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: '\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', THB: '\u0E3F', TWD: 'NT$', USD: '$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'USD',
             symbol: '$'
         }
@@ -556,7 +568,7 @@
 (function () {
     var language = {
         delimiters: {
-            thousands: ' ',
+            thousands: ' ',
             decimal: ','
         },
         abbreviations: {
@@ -568,16 +580,29 @@
         ordinal : function (number) {
             return number === 1 ? 'er' : 'e';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
             format: {
-                full: '#,##0.00 $',
-                negative_full: '(#,##0.00 $)',
-                abbr: '0.00a $',
-                negative_abbr: '(0.00a $)',
-                rounded: '#,### $',
-                negative_rounded: '(#,### $)'
+                full: '#,##0.00 $',
+                negative_full: '(#,##0.00 $)',
+                abbr: '0.00a $',
+                negative_abbr: '(0.00a $)',
+                rounded: '#,### $',
+                negative_rounded: '(#,### $)',
+                exceptions : {
+                  INR : {
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
+                  },
+                  JPY : {
+                    full: '#,### $',
+                    negative_full: '(#,## $)'
+                  }
+                }
             },
-            exceptions: {ADP: '\u20A7A', AFN: 'Af', ANG: 'f.NA', AUD: '$AU', BAM: 'KM', BDT: 'Tk', BEF: 'FB', BND: '$BN', BRL: 'R$', CAD: '$CA', CNY: '\u00A5CN', CYP: '\u00A3CY', DJF: 'FDj', EEK: 'krE', ESP: '\u20A7', EUR: '\u20AC', FJD: '$FJ', FRF: 'F', GBP: '\u00A3UK', HKD: '$HK', IDR: 'Rp', IEP: '\u00A3IE', ILP: '\u00A3IL', ILS: '\u20AA', INR: '\u20B9', ITL: '\u20A4IT', JPY: '\u00A5JP', KRW: '\u20A9', LKR: 'RsSL', MMK: 'KMm', MNT: 'Tug', MTP: '\u00A3MT', MVR: 'Rf', MXN: '$MEX', MYR: 'RM', NPR: 'RsNP', NZD: '$NZ', PKR: 'RsPK', RHD: '$RH', SBD: '$SB', SGD: '$SG', SVC: '\u20A1SV', THB: '\u0E3F', TOP: 'T$', TWD: 'NT$', USD: '$US', VND: '\u20AB', VUV: 'VT', WST: 'WS$', XAF: 'FCFA', XCD: '$EC', XOF: 'CFA', XPF: 'FCFP', ZWD: '$Z'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'EUR',
             symbol: '\u20AC'
         }
@@ -640,6 +665,67 @@
 
 /*! 
  * numeral.js language configuration
+ * language : indonesian (indonesia) (in-id)
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: '.',
+            decimal: ','
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'mio',
+            billion: 'mia',
+            trillion: 'b'
+        },
+        ordinal: function (number) {
+            return '.';
+        },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
+        currency: {
+            format: {
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                USD : {
+                  full: '$ #,##0.00',
+                  negative_full: '($ #,##0.00)'
+                }
+              }
+            },
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            localCurrency: 'IDR',
+            symbol: 'Rp'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('in-id', language);
+    }
+}());
+
+/*! 
+ * numeral.js language configuration
  * language : italian Italy (it)
  * author : Giacomo Trombi : http://cinquepunti.it
  */
@@ -658,16 +744,29 @@
         ordinal: function (number) {
             return 'º';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
             format: {
-                full: '$ #,##0.00',
-                negative_full: '-$ #,##0.00',
-                abbr: '$ 0.00a',
-                negative_abbr: '-$ 0.00a',
-                rounded: '$ #,###',
-                negative_rounded: '-$ #,###'
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                }
+              }
             },
-            exceptions: {AUD: 'A$', BGN: 'Lv', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', ISK: 'Kr', JPY: 'JP\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', PGK: 'K', RON: 'L', THB: '\u0E3F', TMT: 'm', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'EUR',
             symbol: '\u20AC'
         }
@@ -703,16 +802,33 @@
         ordinal: function (number) {
             return '.';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
             format: {
-                full: '$#,##0.00',
-                negative_full: '-$#,##0.00',
-                abbr: '$0.00a',
-                negative_abbr: '-$0.00a',
-                rounded: '$#,###',
-                negative_rounded: '-$#,###'
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                USD : {
+                  full: '$#,##0.00',
+                  negative_full: '($#,##0.00)'
+                }
+              }
             },
-            exceptions: {AUD: 'AU$', BRL: 'R$', CAD: 'CA$', CNY: '\u5143', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: '\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', THB: '\u0E3F', TWD: 'NT$', USD: '$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'JPY',
             symbol: '\u00A5'
         }
@@ -725,6 +841,124 @@
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
         this.numeral.language('ja', language);
+    }
+}());
+
+/*! 
+ * numeral.js language configuration
+ * language : Korean (South Korea) (ko-kr)
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'mio',
+            billion: 'mia',
+            trillion: 'b'
+        },
+        ordinal: function (number) {
+            return '.';
+        },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
+        currency: {
+            format: {
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                }
+              }
+            },
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            localCurrency: 'KRW',
+            symbol: '\uFFE6'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('ko-kr', language);
+    }
+}());
+
+/*! 
+ * numeral.js language configuration
+ * language : Malay (Malaysia) (ms-my)
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'mio',
+            billion: 'mia',
+            trillion: 'b'
+        },
+        ordinal: function (number) {
+            return '.';
+        },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
+        currency: {
+            format: {
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                USD : {
+                  full: '$ #,##0.00\n',
+                  negative_full: '($ #,##0.00\n)'
+                }
+              }
+            },
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            localCurrency: 'MYR',
+            symbol: 'RM'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('ms-my', language);
     }
 }());
 
@@ -749,18 +983,31 @@
             var remainder = number % 100;
             return (number !== 0 && remainder <= 1 || remainder === 8 || remainder >= 20) ? 'ste' : 'de';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
-            format: {
-                full: '$ #,##0.00',
-                negative_full: '$ #,##0.00-',
-                abbr: '$ 0.00a',
-                negative_abbr: '$ 0.00-a',
-                rounded: '$ #,###',
-                negative_rounded: '$ #,###-'
-            },
-            exceptions: {AUD: 'AU $', BRL: 'R$', CAD: 'C$', CNY: 'CN\u00A5', EUR: '\u20AC', FJD: 'FJ$', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: 'JP\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', SBD: 'SI$', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
-            localCurrency: 'EUR',
-            symbol: '\u20AC'
+          format: {
+            full: '$ #,##0.00',
+            negative_full: '($ #,##0.00)',
+            abbr: '$ 0.00a',
+            negative_abbr: '($ 0.00a)',
+            rounded: '$ #,###',
+            negative_rounded: '($ #,###)',
+            exceptions : {
+              INR : {
+                full: '$ #,###',
+                negative_full: '($ #,##)'
+              },
+              JPY : {
+                full: '$ #,###',
+                negative_full: '($ #,##)'
+              }
+            }
+          },
+          exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+          localCurrency: 'EUR',
+          symbol: '\u20AC'
         }
     };
 
@@ -776,13 +1023,72 @@
 
 /*! 
  * numeral.js language configuration
+ * language : Norwegian (Norway) (nl-nl)
+ * author : Dave Clayton : https://github.com/davedx
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: ' ',
+            decimal  : ','
+        },
+        abbreviations: {
+            thousand : 'k',
+            million  : 'mln',
+            billion  : 'mrd',
+            trillion : 'bln'
+        },
+        ordinal : function (number) {
+            var remainder = number % 100;
+            return (number !== 0 && remainder <= 1 || remainder === 8 || remainder >= 20) ? 'ste' : 'de';
+        },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
+        currency: {
+            format: {
+              full: '#,##0.00 $',
+              negative_full: '(#,##0.00 $)',
+              abbr: '0.00a $',
+              negative_abbr: '(0.00-a $)',
+              rounded: '#,### $',
+              negative_rounded: '(#,### $)',
+              exceptions : {
+                INR : {
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
+                },
+                JPY : {
+                  full: '#,### $',
+                  negative_full: '(#,## $)'
+                }
+              }
+            },
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            localCurrency: 'NOK',
+            symbol: 'kr'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('no-no', language);
+    }
+}());
+
+/*! 
+ * numeral.js language configuration
  * language : polish (pl)
  * author : Dominik Bulaj : https://github.com/dominikbulaj
  */
 (function () {
     var language = {
         delimiters: {
-            thousands: ' ',
+            thousands: ' ',
             decimal: ','
         },
         abbreviations: {
@@ -794,18 +1100,35 @@
         ordinal: function (number) {
             return '.';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
-            format: {
+          format: {
+            full: '#,##0.00 $',
+            negative_full: '(#,##0.00 $)',
+            abbr: '0.00a $',
+            negative_abbr: '(0.00a $)',
+            rounded: '#,### $',
+            negative_rounded: '(#,### $)',
+            exceptions : {
+              INR : {
+                full: '#,### $',
+                negative_full: '(#,## $)'
+              },
+              JPY : {
+                full: '#,### $',
+                negative_full: '(#,## $)'
+              },
+              USD : {
                 full: '#,##0.00 $',
-                negative_full: '(#,##0.00 $)',
-                abbr: '0.00a $',
-                negative_abbr: '(0.00a $)',
-                rounded: '#,### $',
-                negative_rounded: '(#,### $)'
-            },
-            exceptions: {AUD: 'A$', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: 'JP\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', PLN: 'z\u0142', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
-            localCurrency: 'PLN',
-            symbol: 'z\u0142'
+                negative_full: '(#,##0.00 $)'
+              }
+            }
+          },
+          exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+          localCurrency: 'PLN',
+          symbol: 'z\u0142'
         }
     };
 
@@ -839,16 +1162,29 @@
         ordinal: function (number) {
             return 'º';
         },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
         currency: {
             format: {
-                full: '$#,##0.00',
-                negative_full: '-$#,##0.00',
-                abbr: '$0.00a',
-                negative_abbr: '-$0.00a',
-                rounded: '$#,###',
-                negative_rounded: '-$#,###'
+              full: '$ #,##0.00',
+              negative_full: '($ #,##0.00)',
+              abbr: '$ 0.00a',
+              negative_abbr: '($ 0.00a)',
+              rounded: '$ #,###',
+              negative_rounded: '($ #,###)',
+              exceptions : {
+                INR : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                },
+                JPY : {
+                  full: '$ #,###',
+                  negative_full: '($ #,##)'
+                }
+              }
             },
-            exceptions: {AUD: 'AU$', BRL: 'R$', CAD: 'CA$', CNY: 'CN\u00A5', EUR: '\u20AC', GBP: '\u00A3', HKD: 'HK$', ILS: '\u20AA', INR: '\u20B9', JPY: 'JP\u00A5', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZ$', PTE: 'Esc.', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+            exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'US$', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
             localCurrency: 'BRL',
             symbol: 'R$'
         }
@@ -906,6 +1242,63 @@
     // Browser
     if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
         this.numeral.language('pt-pt', language);
+    }
+}());
+
+/*! 
+ * numeral.js language configuration
+ * language : Romanian (Romania) (ro-ro)
+ */
+(function () {
+    var language = {
+        delimiters: {
+            thousands: '.',
+            decimal: ','
+        },
+        abbreviations: {
+            thousand: 'mil',
+            million: 'milhões',
+            billion: 'b',
+            trillion: 't'
+        },
+        ordinal: function (number) {
+            return 'º';
+        },
+        number : {
+          defaultFormat : '#,##0[.]00[0]'
+        },
+        currency: {
+          format: {
+            full: '#,##0.00 $',
+            negative_full: '(#,##0.00 $)',
+            abbr: '0.00a $',
+            negative_abbr: '(0.00a $)',
+            rounded: '#,### $',
+            negative_rounded: '(#,### $)',
+            exceptions : {
+              INR : {
+                full: '#,### $',
+                negative_full: '(#,## $)'
+              },
+              JPY : {
+                full: '#,### $',
+                negative_full: '(#,## $)'
+              }
+            }
+          },
+          exceptions: {AUD: 'AUD', BRL: 'BRL', CAD: 'CAD', CNY: 'CN\u00A5', DKK: 'DKK', EUR: 'EUR', GBP: 'GBP', HKD: 'HKD', ILS: '\u20AA', INR: 'INR', JPY: 'JPY', KRW: '\u20A9', MXN: 'MX$', NZD: 'NZD', THB: '\u0E3F', TWD: 'NT$', USD: 'USD', VND: '\u20AB', XAF: 'FCFA', XCD: 'EC$', XOF: 'CFA', XPF: 'CFPF'},
+          localCurrency: 'RON',
+          symbol: 'LEI'
+        }
+    };
+
+    // Node
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = language;
+    }
+    // Browser
+    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
+        this.numeral.language('ro-ro', language);
     }
 }());
 

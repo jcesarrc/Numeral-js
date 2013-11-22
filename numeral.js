@@ -160,7 +160,7 @@
           currencyFormat = lang.currency.format.exceptions[currency][formatTypeLookupKey];
         }
 
-        format = currencyFormat.replace(/(?: ?\$ ? ?)|\-/g, '').replace(' ','');
+        format = currencyFormat.replace(/(?: ?\$ ? ?)|\-/g, '').replace(' ','').replace('\n','');
         if (!currency) {
             currencySymbol = lang.currency.symbol;
         } else if (defaultCurrencies.indexOf(currency) > -1) {

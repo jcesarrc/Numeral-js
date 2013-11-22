@@ -1,11 +1,11 @@
 var numeral = require('../../numeral'),
-    language = require('../../languages/fr');
+    language = require('../../languages/no-no');
 
-numeral.language('fr', language);
+numeral.language('no-no', language);
 
-exports['language:fr'] = {
+exports['language:no-no'] = {
     setUp: function (callback) {
-        numeral.language('fr');
+        numeral.language('no-no');
         callback();
     },
 
@@ -15,7 +15,7 @@ exports['language:fr'] = {
     },
 
     format: function (test) {
-        test.expect(16);
+        test.expect(24);
 
         var tests = [
             [10000,'0,0.0000','10 000,0000'],
@@ -26,13 +26,21 @@ exports['language:fr'] = {
             [-0.23,'.00','-,23'],
             [-0.23,'(.00)','(,23)'],
             [0.23,'0.00000','0,23000'],
-            [1230974,'0.0a','1,2m'],
+            [1230974,'0.0a','1,2mln'],
+            [1430974124,'0.0a','1,4mrd'],
+            [9123456789234,'0.0a','9,1bln'],
             [1460,'0a','1k'],
             [-104000,'0a','-104k'],
-            [1,'0o','1er'],
-            [52,'0o','52e'],
-            [23,'0o','23e'],
-            [100,'0o','100e'],
+            [0,'0o','0de'],
+            [1,'0o','1ste'],
+            [2,'0o','2de'],
+            [8,'0o','8ste'],
+            [19,'0o','19de'],
+            [20,'0o','20ste'],
+            [100,'0o','100ste'],
+            [102,'0o','102de'],
+            [108,'0o','108ste'],
+            [109,'0o','109de'],
             [1,'0[.]0','1']
         ];
 
@@ -47,10 +55,10 @@ exports['language:fr'] = {
         test.expect(8);
 
         var tests = [
-            [1000.234,'$0,0.00','full','1 000,23 €'],
-            [-1000.234,'($0,0)','rounded','(1 000 €)'],
-            [-1000.234,'$0.00','full','(1 000,23 €)'],
-            [1230974,'($0.00a)','abbr','1,23m €']
+            [1000.234,'$0,0.00','full','1 000,23 kr'],
+            [-1000.234,'($0,0)','rounded','(1 000 kr)'],
+            [-1000.234,'$0.00','full','(1 000,23 kr)'],
+            [1230974,'($0.00a)','abbr','1,23mln kr']
         ];
 
         for (var i = 0; i < tests.length; i++) {
@@ -87,11 +95,11 @@ exports['language:fr'] = {
         var tests = [
             ['10 000,123',10000.123],
             ['(0,12345)',-0.12345],
-            ['(€1,23m)',-1230000],
+            ['(kr 1,23 mln)',-1230000],
             ['10k',10000],
             ['-10k',-10000],
             ['23e',23],
-            ['€10 000,00',10000],
+            ['kr 10.000,00',10000],
             ['-76%',-0.76],
             ['2:23:57',8637]
         ];
