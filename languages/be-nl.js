@@ -3,7 +3,7 @@
  * language : belgium-dutch (be-nl)
  * author : Dieter Luypaert : https://github.com/moeriki
  */
-(function () {
+(function (root) {
     var language = {
         delimiters: {
             thousands: ' ',
@@ -34,12 +34,12 @@
         }
     };
 
-    // Node
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
-    }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('be-nl', language);
-    }
-}());
+  // Node
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = language;
+  }
+
+  if (root.numeral && root.numeral.language) {
+    root.numeral.language('be-nl', language);
+  }
+}(this));

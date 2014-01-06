@@ -3,7 +3,7 @@
  * language : danish denmark (dk)
  * author : Michael Storgaard : https://github.com/mstorgaard
  */
-(function () {
+(function (root) {
     var language = {
         delimiters: {
             thousands: '.',
@@ -48,10 +48,10 @@
 
     // Node
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
+      module.exports = language;
     }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('da-dk', language);
+
+    if (root.numeral && root.numeral.language) {
+      root.numeral.language('da-dk', language);
     }
-}());
+}(this));

@@ -3,7 +3,7 @@
  * language : Swedish (sv-se)
  * author : Dan Hagman (https://github.com/hagmandan)
  */
- (function () {
+ (function (root) {
   var language = {
     delimiters: {
       thousands: ' ',
@@ -46,12 +46,12 @@
     }
   };
 
-    // Node
-    if (typeof module !== 'undefined' && module.exports) {
-      module.exports = language;
-    }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-      this.numeral.language('sv-se', language);
-    }
-  }());
+  // Node
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = language;
+  }
+
+  if (root.numeral && root.numeral.language) {
+    root.numeral.language('sv-se', language);
+  }
+}(this));

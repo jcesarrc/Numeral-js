@@ -3,7 +3,7 @@
  * language : German in Switzerland (de-ch)
  * author : Michael Piefel : https://github.com/piefel (based on work from Marco Krage : https://github.com/sinky)
  */ 
-(function () {
+(function (root) {
     var language = {
         delimiters: {
             thousands: ',',
@@ -33,12 +33,12 @@
         }
     };
 
-    // Node
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
-    }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('de-ch', language);
-    }
-}());
+  // Node
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = language;
+  }
+  if (root.numeral && root.numeral.language) {
+    root.numeral.language('de-ch', language);
+  }
+
+}(this));

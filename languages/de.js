@@ -3,7 +3,7 @@
  * language : German (de) – generally useful in Germany, Austria, Luxembourg, Belgium
  * author : Marco Krage : https://github.com/sinky
  */
-(function () {
+(function (root) {
     var language = {
         delimiters: {
             thousands: '.',
@@ -48,10 +48,10 @@
 
     // Node
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = language;
+      module.exports = language;
     }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('de', language);
+
+    if (root.numeral && root.numeral.language) {
+      root.numeral.language('de', language);
     }
-}());
+}(this));

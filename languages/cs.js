@@ -3,7 +3,7 @@
  * language : czech (cs)
  * author : Anatoli Papirovski : https://github.com/apapirovski
  */
-(function () {
+(function (root) {
     var language = {
         delimiters: {
             thousands: ' ',
@@ -50,8 +50,8 @@
     if (typeof module !== 'undefined' && module.exports) {
       module.exports = language;
     }
-    // Browser
-    if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-        this.numeral.language('cs', language);
+
+    if (root.numeral && root.numeral.language) {
+      root.numeral.language('cs', language);
     }
-}());
+}(this));

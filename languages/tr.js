@@ -3,7 +3,7 @@
  * language : turkish (tr)
  * author : Ecmel Ercan : https://github.com/ecmel, Erhan Gundogan : https://github.com/erhangundogan, Burak Yiğit Kaya: https://github.com/BYK
  */
- (function () {
+ (function (root) {
   var suffixes = {
     1: '\'inci',
     5: '\'inci',
@@ -87,8 +87,8 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = language;
   }
-  // Browser
-  if (typeof window !== 'undefined' && this.numeral && this.numeral.language) {
-    this.numeral.language('tr', language);
+
+  if (root.numeral && root.numeral.language) {
+    root.numeral.language('tr', language);
   }
-}());
+}(this));
