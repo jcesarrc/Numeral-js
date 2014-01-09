@@ -604,11 +604,4 @@
         // for Closure Compiler 'advanced' mode
         this['numeral'] = numeral;
     }
-
-    /*global define:false */
-    if (typeof define === 'function' && define.amd) {
-        define([], function () {
-            return numeral;
-        });
-    }
 }).call(this);
