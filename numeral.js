@@ -174,7 +174,11 @@
         }
         // format the number
         formattedNumber = formatNumber(n._value, format, roundingFunction).replace(/[\(\-\)]/g,'');
-        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|0[,.]00 ?a|#[,. ]###|#[,\. ]##)/, formattedNumber).replace('$', currencySymbol);
+        output = currencyFormat.replace(/(?:#[,\. ]##0[.,]00|0[,.]00 ?a|#[,. ]###|#[,\. ]##)/, formattedNumber);
+        var dollarIndex = output.indexOf('$');
+        if (dollarIndex > -1) {
+            output = output.substring(0, dollarIndex) + currencySymbol + output.substring(dollarIndex + 1);
+        }
 
         return output;
     }
