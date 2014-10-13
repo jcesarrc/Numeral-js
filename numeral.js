@@ -1,6 +1,6 @@
 /*!
  * numeral.js
- * version : 1.5.3
+ * version : 1.5.4
  * author : Adam Draper
  * license : MIT
  * http://adamwdraper.github.com/Numeral-js/
@@ -252,7 +252,9 @@
             precision,
             thousands,
             d = '',
-            neg = false;
+            neg = false,
+            formatted,
+            isRtlLang = languages[currentLanguage].isRtl;
 
         // check if number is zero and a custom zero format has been set
         if (value === 0 && zeroFormat !== null) {
@@ -383,7 +385,42 @@
                 w = '';
             }
 
-            return ((negP && neg) ? '(' : '') + ((!negP && neg) ? '-' : '') + ((!neg && signed) ? '+' : '') + w + d + ((ord) ? ord : '') + ((abbr) ? abbr : '') + ((bytes) ? bytes : '') + ((negP && neg) ? ')' : '');
+            formatted = w + d;
+
+            if (ord)
+            {
+              formatted = formatted + ord;
+            }
+
+            if(abbr)
+            {
+              formatted = formatted + abbr;
+            }
+
+            if(bytes)
+            {
+              formatted = formatted + bytes;
+            }
+
+            if (neg) {
+              if (negP) {
+                formatted = '(' + formatted + ')';
+              } else {
+                if(isRtlLang) {
+                  formatted = formatted + '-';
+                } else {
+                  formatted = '-' + formatted ;
+                }
+              }
+            } else if (signed) {
+              if(isRtlLang) {
+                formatted = formatted + '+';
+              } else {
+                formatted = '+' + formatted;
+              }
+            }
+
+          return  formatted;
         }
     }
 
